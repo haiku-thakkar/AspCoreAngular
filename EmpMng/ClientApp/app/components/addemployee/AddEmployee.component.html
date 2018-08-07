@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <h3>Employee</h3>
+    <hr />
+
+    <form [formGroup]="employeeForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="First Name">First Name</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="firstName">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'firstName') && formDir.submitted">
+                FirstName is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Last Name">Last Name</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="lastName">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'lastName') && formDir.submitted">
+                LastName is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Email">Email</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="email">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'email') && formDir.submitted">
+                Email is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Contact Number">Contact Number</label>
+            <div class="col-md-4">
+                <input class="form-control" type="number" formControlName="contactNumber">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'contactNumber') && formDir.submitted">
+                Contact Number is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Address">Address</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="address">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'address') && formDir.submitted">
+                Address is required.
+            </span>
+        </div>
+
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Username">Username</label>
+            <div class="col-md-4">
+                <input class="form-control" type="text" formControlName="userName">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'userName') && formDir.submitted">
+                Username is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Password">Password</label>
+            <div class="col-md-4">
+                <input class="form-control" type="password" formControlName="password">
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'password') && formDir.submitted">
+                Password is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class=" control-label col-md-12" for="Gender">Gender</label>
+            <div class="col-md-4">
+                <input type="radio" formControlName="gender" value="Male">Male<br />
+                <input type="radio" formControlName="gender" value="Female">Female
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'gender') && formDir.submitted">
+                Gender is required.
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="Qualification">Qualification</label>
+            <div class="col-md-4">
+                <select class="form-control" data-val="true" formControlName="qualification">
+                    <option value="">--Select Qualification--</option>
+                    <option *ngFor="let qua of QualificationList"
+                            value={{qua.qualificationName}}>
+                        {{qua.qualificationName}}
+                    </option>
+                </select>
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'qualification') && formDir.submitted">
+                Qualification  is required
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="Experience">Experience</label>
+            <div class="col-md-4">
+                <select class="form-control" data-val="true" formControlName="experience">
+                    <option value="">--Select Experience--</option>
+                    <option *ngFor="let exp of ExperienceList"
+                            value={{exp.experienceName}}>
+                        {{exp.experienceName}}
+                    </option>
+                </select>
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'experience') && formDir.submitted">
+                Experience is required
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <label class="control-label col-md-12" for="Language">Language</label>
+            <div class="col-md-4">
+                <select class="form-control" data-val="true" formControlName="lang">
+                    <option value="">--Select Language--</option>
+                    <option *ngFor="let la of LanguageList"
+                            value={{la.languageName}}>
+                        {{la.languageName}}
+                    </option>
+                </select>
+            </div>
+            <span class="text-danger" *ngIf="employeeForm.hasError('required', 'lang') && formDir.submitted">
+                Language is required
+            </span>
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Save</button>
+            <button class="btn" (click)="cancel()">Cancel</button>
+        </div>
+
+
+    </form>
+</body>
+</html>

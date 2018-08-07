@@ -1,0 +1,55 @@
+﻿
+<h1>Employee Data</h1>
+
+
+
+<p *ngIf="!empList"><em>Loading....</em></p>
+
+<p>
+    <a [routerLink]="['/register-employee']"></a>
+</p>
+
+<div>
+    <button class='btn btn-warning' [routerLink]="['/new-employee']">
+        Add New Employee
+    </button>
+</div><br />
+
+<table class="table" *ngIf="empList">
+    <thead>
+        <tr>
+            <th>EmployeeId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>ContactNumber</th>
+            <th>Address</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>Gender</th>
+            <th>Qualification</th>
+            <th>Experience</th>
+            <th>Language</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empList">
+            <td>{{emp.employeeId}}</td>
+            <td>{{emp.firstName}}</td>
+            <td>{{emp.lastName}}</td>
+            <td>{{emp.email}}</td>
+            <td>{{emp.contactNumber}}</td>
+            <td>{{emp.address}}</td>
+            <td>{{emp.userName}}</td>
+            <td>{{emp.password}}</td>
+            <td>{{emp.gender}}</td>
+            <td>{{emp.qualification}}</td>
+            <td>{{emp.experience}}</td>
+            <td>{{emp.lang}}</td>
+            <td>
+                <a [routerLink]="['/employee/edit/', emp.employeeId]">Edit</a> |
+                <a [routerLink]="" (click)="delete(emp.employeeId)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
